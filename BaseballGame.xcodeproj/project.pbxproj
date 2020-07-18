@@ -3,10 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8418814624C1F11800ED7BFF /* VideoNewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418814524C1F11800ED7BFF /* VideoNewsViewController.swift */; };
+		8418814A24C21F3500ED7BFF /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418814924C21F3500ED7BFF /* Article.swift */; };
+		8418814C24C223AE00ED7BFF /* ArticleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418814B24C223AE00ED7BFF /* ArticleController.swift */; };
+		8418814F24C227B200ED7BFF /* ArticleError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418814E24C227B200ED7BFF /* ArticleError.swift */; };
+		8418815224C2315200ED7BFF /* ArticleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418815124C2315200ED7BFF /* ArticleTableViewCell.swift */; };
+		8418815424C2325000ED7BFF /* ArticleListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418815324C2325000ED7BFF /* ArticleListTableViewController.swift */; };
+		8418815624C2395100ED7BFF /* ErrorActionSheetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418815524C2395000ED7BFF /* ErrorActionSheetExtension.swift */; };
+		8418815824C23A6F00ED7BFF /* ArticleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418815724C23A6F00ED7BFF /* ArticleListViewController.swift */; };
 		8450E62724BD54A100E8F512 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450E62624BD54A100E8F512 /* AppDelegate.swift */; };
 		8450E62924BD54A100E8F512 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450E62824BD54A100E8F512 /* SceneDelegate.swift */; };
 		8450E62B24BD54A100E8F512 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450E62A24BD54A100E8F512 /* ViewController.swift */; };
@@ -14,9 +22,22 @@
 		8450E63124BD54A100E8F512 /* BaseballGame.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8450E62F24BD54A100E8F512 /* BaseballGame.xcdatamodeld */; };
 		8450E63324BD54A400E8F512 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8450E63224BD54A400E8F512 /* Assets.xcassets */; };
 		8450E63624BD54A400E8F512 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8450E63424BD54A400E8F512 /* LaunchScreen.storyboard */; };
+		8450E6BC24C14EF100E8F512 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450E6BB24C14EF000E8F512 /* Ball.swift */; };
+		D082B706F272799F1DBC8DBA /* Pods_BaseballGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73EA5E75E41B74ED4AC2D37A /* Pods_BaseballGame.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		437940DD0CA017544C8C0E4D /* Pods-BaseballGame.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseballGame.debug.xcconfig"; path = "Target Support Files/Pods-BaseballGame/Pods-BaseballGame.debug.xcconfig"; sourceTree = "<group>"; };
+		567168F2031A05567AE19CE3 /* Pods-BaseballGame.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BaseballGame.release.xcconfig"; path = "Target Support Files/Pods-BaseballGame/Pods-BaseballGame.release.xcconfig"; sourceTree = "<group>"; };
+		73EA5E75E41B74ED4AC2D37A /* Pods_BaseballGame.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BaseballGame.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8418814524C1F11800ED7BFF /* VideoNewsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoNewsViewController.swift; sourceTree = "<group>"; };
+		8418814924C21F3500ED7BFF /* Article.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
+		8418814B24C223AE00ED7BFF /* ArticleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleController.swift; sourceTree = "<group>"; };
+		8418814E24C227B200ED7BFF /* ArticleError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleError.swift; sourceTree = "<group>"; };
+		8418815124C2315200ED7BFF /* ArticleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleTableViewCell.swift; sourceTree = "<group>"; };
+		8418815324C2325000ED7BFF /* ArticleListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListTableViewController.swift; sourceTree = "<group>"; };
+		8418815524C2395000ED7BFF /* ErrorActionSheetExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorActionSheetExtension.swift; sourceTree = "<group>"; };
+		8418815724C23A6F00ED7BFF /* ArticleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListViewController.swift; sourceTree = "<group>"; };
 		8450E62324BD54A100E8F512 /* BaseballGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseballGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8450E62624BD54A100E8F512 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8450E62824BD54A100E8F512 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +47,7 @@
 		8450E63224BD54A400E8F512 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8450E63524BD54A400E8F512 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8450E63724BD54A400E8F512 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8450E6BB24C14EF000E8F512 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +55,46 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D082B706F272799F1DBC8DBA /* Pods_BaseballGame.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		500BE96A40656F028C68B3B2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				437940DD0CA017544C8C0E4D /* Pods-BaseballGame.debug.xcconfig */,
+				567168F2031A05567AE19CE3 /* Pods-BaseballGame.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		501855CB263C8923BA81EEFE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				73EA5E75E41B74ED4AC2D37A /* Pods_BaseballGame.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8418815024C22E0100ED7BFF /* Helper + Extension */ = {
+			isa = PBXGroup;
+			children = (
+				8418815524C2395000ED7BFF /* ErrorActionSheetExtension.swift */,
+				8418814E24C227B200ED7BFF /* ArticleError.swift */,
+			);
+			path = "Helper + Extension";
+			sourceTree = "<group>";
+		};
 		8450E61A24BD54A100E8F512 = {
 			isa = PBXGroup;
 			children = (
 				8450E62524BD54A100E8F512 /* BaseballGame */,
 				8450E62424BD54A100E8F512 /* Products */,
+				500BE96A40656F028C68B3B2 /* Pods */,
+				501855CB263C8923BA81EEFE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +109,7 @@
 		8450E62524BD54A100E8F512 /* BaseballGame */ = {
 			isa = PBXGroup;
 			children = (
+				8418815024C22E0100ED7BFF /* Helper + Extension */,
 				8450E6B824C1461700E8F512 /* Models */,
 				8450E6B724C1461100E8F512 /* Views */,
 				8450E6B624C1460A00E8F512 /* Controllers */,
@@ -99,6 +151,8 @@
 		8450E6B824C1461700E8F512 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				8450E6BB24C14EF000E8F512 /* Ball.swift */,
+				8418814924C21F3500ED7BFF /* Article.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -107,6 +161,10 @@
 			isa = PBXGroup;
 			children = (
 				8450E62A24BD54A100E8F512 /* ViewController.swift */,
+				8418814524C1F11800ED7BFF /* VideoNewsViewController.swift */,
+				8418815324C2325000ED7BFF /* ArticleListTableViewController.swift */,
+				8418815124C2315200ED7BFF /* ArticleTableViewCell.swift */,
+				8418815724C23A6F00ED7BFF /* ArticleListViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -114,6 +172,7 @@
 		8450E6BA24C1462A00E8F512 /* ModelController */ = {
 			isa = PBXGroup;
 			children = (
+				8418814B24C223AE00ED7BFF /* ArticleController.swift */,
 			);
 			path = ModelController;
 			sourceTree = "<group>";
@@ -125,9 +184,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8450E63A24BD54A400E8F512 /* Build configuration list for PBXNativeTarget "BaseballGame" */;
 			buildPhases = (
+				739963A058B92A795780AF44 /* [CP] Check Pods Manifest.lock */,
 				8450E61F24BD54A100E8F512 /* Sources */,
 				8450E62024BD54A100E8F512 /* Frameworks */,
 				8450E62124BD54A100E8F512 /* Resources */,
+				090F40E488221445D172634C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -184,15 +245,66 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		090F40E488221445D172634C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BaseballGame/Pods-BaseballGame-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-BaseballGame/Pods-BaseballGame-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-BaseballGame/Pods-BaseballGame-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		739963A058B92A795780AF44 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BaseballGame-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8450E61F24BD54A100E8F512 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8418815224C2315200ED7BFF /* ArticleTableViewCell.swift in Sources */,
+				8418815424C2325000ED7BFF /* ArticleListTableViewController.swift in Sources */,
 				8450E62B24BD54A100E8F512 /* ViewController.swift in Sources */,
 				8450E63124BD54A100E8F512 /* BaseballGame.xcdatamodeld in Sources */,
+				8418815624C2395100ED7BFF /* ErrorActionSheetExtension.swift in Sources */,
+				8418814C24C223AE00ED7BFF /* ArticleController.swift in Sources */,
+				8450E6BC24C14EF100E8F512 /* Ball.swift in Sources */,
+				8418814F24C227B200ED7BFF /* ArticleError.swift in Sources */,
+				8418815824C23A6F00ED7BFF /* ArticleListViewController.swift in Sources */,
 				8450E62724BD54A100E8F512 /* AppDelegate.swift in Sources */,
+				8418814A24C21F3500ED7BFF /* Article.swift in Sources */,
 				8450E62924BD54A100E8F512 /* SceneDelegate.swift in Sources */,
+				8418814624C1F11800ED7BFF /* VideoNewsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +446,7 @@
 		};
 		8450E63B24BD54A400E8F512 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 437940DD0CA017544C8C0E4D /* Pods-BaseballGame.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -352,6 +465,7 @@
 		};
 		8450E63C24BD54A400E8F512 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 567168F2031A05567AE19CE3 /* Pods-BaseballGame.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
