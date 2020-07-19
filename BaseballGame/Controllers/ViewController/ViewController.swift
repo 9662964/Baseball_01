@@ -12,9 +12,11 @@ import Foundation
 
 class ViewController: UIViewController {
     
+    static let shared = ViewController()
+    
     var timer = Timer()
     var totalTime: Int = 0
-    
+    var score: [String] = []
     
 
     //MARK: - Properties
@@ -44,6 +46,8 @@ class ViewController: UIViewController {
     var userInputAddToArray = [String]()
     var userInputSplitNumber = [String]()
     var userInput = [String]()
+    var playBtn = UIBarButtonItem()
+    var pauseBtn = UIBarButtonItem()
     
 
     //MARK: - Outlet
@@ -72,8 +76,39 @@ class ViewController: UIViewController {
         //MARK: display golden number
         //randomNumberLabel.text = tempGeneratedNumber
         gettingGoldenNumber()
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+//        self.playBtn = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(Action))
+//
+//        self.pauseBtn = UIBarButtonItem(barButtonSystemItem: .pause, target: self, action: #selector(pause))
+        
     }
+    @IBAction func playBtnTapped(_ sender: Any) {
+        timerFunction()
+    }
+    
+    
+    
+ 
+    
+    func timerFunction() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(Action), userInfo: nil, repeats: true)
+    }
+    
+    @IBAction func pauseBtnTapped(_ sender: Any) {
+        
+        timer.invalidate()
+    }
+    
+//    @objc func pause() {
+//        timer.invalidate()
+//        self.navigationItem.rightBarButtonItem = playBtn
+//    }
+    
+   @objc func Action() {
+        totalTime += 1
+        timerLabel.text = "\(totalTime)"
+    }
+    
+    
     
     @objc func updateTimer() {
         totalTime += 1
@@ -96,6 +131,14 @@ class ViewController: UIViewController {
         inputField.text = ""
         resetLabel()
     }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+
     
     @IBAction func resetBtnTapped(_ sender: Any) {
         resetLabel()
@@ -122,6 +165,8 @@ class ViewController: UIViewController {
         ballCount = 0
         outCount = 0
         var labelRest = "Strike: \(strikeCount), Ball: \(ballCount), Out: \(outCount)"
+        timer.invalidate()
+        timerLabel.text = "0"
     }
     
     func updateLabel() {
@@ -156,6 +201,8 @@ class ViewController: UIViewController {
         func checkStrike() {
             if  userInput[0] == goldenNumber[0] && userInput[1] == goldenNumber[1] && userInput[2] == goldenNumber[2] {
                 strikeCount = 3
+                let finalScore:String = String(totalTime)
+                score.append(finalScore)
                 print("Strike: \(strikeCount), Ball: \(ballCount), Out: \(outCount)")
             }
             else if userInput[0] == goldenNumber[0] && userInput[1] == goldenNumber[1] ||
