@@ -13,20 +13,114 @@ class ArticleListTableViewController: UITableViewController,UISearchBarDelegate 
     
     @IBOutlet weak var articleSearchBar: UISearchBar!
     
+    var tempSearchTerm: String  = ""
+    
     
     
     var articles : [Article] = []
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchArticle()
         articleSearchBar.delegate = self
+        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
+        view.addGestureRecognizer(tap)
+        tap.cancelsTouchesInView = false
+//        tableView.backgroundColor = UIColor.lightBlue
     }
     
-//    override func viewWillLayoutSubviews() {
-//        super.viewWillAppear(true)
-//        tableView.reloadData()
-//    }
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = UIColor.lightBlue
+        return view
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
+    
+    
+    @IBAction func shareBtnTapped(_ sender: Any) {
+       
+        
+        /*  share the text string
+            let text = "This is the text....."
+            let textShare = [ text ]
+            let activityViewController = UIActivityViewController(activityItems: textShare , applicationActivities: nil)
+            activityViewController.popoverPresentationController?.sourceView = self.view
+            self.present(activityViewController, animated: true, completion: nil)
+       */
+        
+        
+        // Capture the whole screen and share
+        let bounds = UIScreen.main.bounds
+        UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
+        self.view.drawHierarchy(in: bounds, afterScreenUpdates: false)
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        let activityViewController = UIActivityViewController(activityItems: [img!], applicationActivities: nil)
+        activityViewController.popoverPresentationController?.sourceView = self.view
+        self.present(activityViewController, animated: true, completion: nil)
+
+         
+ 
+        }
+    
+    
+    @IBAction func favoriteBtnTapped(_ sender: Any) {
+        print("Favorite btn tapped from atriclelisttableView")
+        let indexPath = tableView.indexPathForSelectedRow
+        print(indexPath)
+    }
+    
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let accept = UIContextualAction(style: .normal, title: "Favorite") { (action, view, nil) in
+            print("Has been accepted")
+            print(indexPath)
+            tableView.backgroundColor = UIColor.lightBlue
+            self.tempSearchTerm = self.articles[indexPath.row].title ?? ""
+            let tempUrl = self.articles[indexPath.row].url
+            print(tempUrl)
+            print(self.tempSearchTerm)
+        }
+        
+        accept.backgroundColor = #colorLiteral(red: 0.4666666687, green: 0.7647058964, blue: 0.2666666806, alpha: 1)
+        //How to add icon
+        //accept.image = #imageLiteral(resourceName: <#T##String#>)
+        
+        let waitlist = UIContextualAction(style: .normal, title: "Share") { (action, view, nil) in
+            print("Has been on the wait list")
+        }
+        
+        waitlist.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
+        //prevent full swipe
+        let config = UISwipeActionsConfiguration(actions: [accept,waitlist])
+        config.performsFirstActionWithFullSwipe = false
+        return config
+        
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let delete = UIContextualAction(style: .normal, title: "Like") { (action, view, nil) in
+            print("like")
+        }
+        delete.backgroundColor = #colorLiteral(red: 0.9372549057, green: 0.3490196168, blue: 0.1921568662, alpha: 1)
+        return UISwipeActionsConfiguration(actions: [delete])
+    }
+    
+    
+    
+    @objc func dismissKeyboard() {
+        view.endEditing(true)
+    }
+    
+    //    override func viewWillLayoutSubviews() {
+    //        super.viewWillAppear(true)
+    //        tableView.reloadData()
+    //    }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let searchTerm = articleSearchBar.text, !searchTerm.isEmpty else {return}
@@ -91,6 +185,11 @@ class ArticleListTableViewController: UITableViewController,UISearchBarDelegate 
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 150
+    }
+    
+    
     
     /*
      // Override to support conditional editing of the table view.
@@ -140,14 +239,11 @@ class ArticleListTableViewController: UITableViewController,UISearchBarDelegate 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedArticle = articles[indexPath.row]
         let safariVC = SFSafariViewController(url:selectedArticle.url!)
-        //print(selectedArticle.url)
+        print(selectedArticle.url)
         safariVC.view.tintColor = .blue
         safariVC.delegate = self
         self.present(safariVC, animated: true, completion: nil)
-        
-        
     }
-    
 }
 
 

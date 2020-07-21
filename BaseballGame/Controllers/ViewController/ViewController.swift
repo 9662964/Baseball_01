@@ -1,3 +1,6 @@
+
+
+
 //
 //  ViewController.swift
 //  BaseballGame
@@ -12,9 +15,11 @@ import Foundation
 
 class ViewController: UIViewController {
     
+    static let shared = ViewController()
+    
     var timer = Timer()
     var totalTime: Int = 0
-    
+    var score: [String] = []
     
 
     //MARK: - Properties
@@ -44,6 +49,8 @@ class ViewController: UIViewController {
     var userInputAddToArray = [String]()
     var userInputSplitNumber = [String]()
     var userInput = [String]()
+    var playBtn = UIBarButtonItem()
+    var pauseBtn = UIBarButtonItem()
     
 
     //MARK: - Outlet
@@ -72,8 +79,40 @@ class ViewController: UIViewController {
         //MARK: display golden number
         //randomNumberLabel.text = tempGeneratedNumber
         gettingGoldenNumber()
-        timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
+        number = []
+//        self.playBtn = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(Action))
+//
+//        self.pauseBtn = UIBarButtonItem(barButtonSystemItem: .pause, target: self, action: #selector(pause))
+        
     }
+    @IBAction func playBtnTapped(_ sender: Any) {
+        timerFunction()
+    }
+    
+    
+    
+ 
+    
+    func timerFunction() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(Action), userInfo: nil, repeats: true)
+    }
+    
+    @IBAction func pauseBtnTapped(_ sender: Any) {
+        
+        timer.invalidate()
+    }
+    
+//    @objc func pause() {
+//        timer.invalidate()
+//        self.navigationItem.rightBarButtonItem = playBtn
+//    }
+    
+   @objc func Action() {
+        totalTime += 1
+        timerLabel.text = "\(totalTime)"
+    }
+    
+    
     
     @objc func updateTimer() {
         totalTime += 1
@@ -94,8 +133,16 @@ class ViewController: UIViewController {
         updateLabel()
         indexNumber += 1
         inputField.text = ""
-        resetLabel()
+//        resetLabel()
     }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+
     
     @IBAction func resetBtnTapped(_ sender: Any) {
         resetLabel()
@@ -115,6 +162,7 @@ class ViewController: UIViewController {
         tempGeneratedNumber = String(firstNumber) + String(secondNumber) + String(thirdNumber)
         gettingGoldenNumber()
         totalTime = 0
+        number = []
     }
     
     func resetLabel() {
@@ -122,6 +170,8 @@ class ViewController: UIViewController {
         ballCount = 0
         outCount = 0
         var labelRest = "Strike: \(strikeCount), Ball: \(ballCount), Out: \(outCount)"
+        timer.invalidate()
+        timerLabel.text = "0"
     }
     
     func updateLabel() {
@@ -156,7 +206,11 @@ class ViewController: UIViewController {
         func checkStrike() {
             if  userInput[0] == goldenNumber[0] && userInput[1] == goldenNumber[1] && userInput[2] == goldenNumber[2] {
                 strikeCount = 3
+                let finalScore:String = String(totalTime)
+                score.append(finalScore)
                 print("Strike: \(strikeCount), Ball: \(ballCount), Out: \(outCount)")
+                timer.invalidate()
+                
             }
             else if userInput[0] == goldenNumber[0] && userInput[1] == goldenNumber[1] ||
                 userInput[0] == goldenNumber[0] && userInput[2] == goldenNumber[2] ||
@@ -212,6 +266,9 @@ class ViewController: UIViewController {
             {
                 ballCount = 1
                   print("Strike: \(strikeCount), Ball: \(ballCount), Out: \(outCount)")
+            } else {
+                ballCount = 0
+                  print("Strike: \(strikeCount), Ball: \(ballCount), Out: \(outCount)")
             }
         }
     
@@ -228,8 +285,8 @@ class ViewController: UIViewController {
         guard let input = inputField.text else {return}
         rawInput = input
         print("Before Input Split - first input number: \(input)")
-        var userInputAddToArray = inputNumber.append(input)
-        print("Temp Input into Array: \(userInputAddToArray)")
+//        var userInputAddToArray = inputNumber.append(input)
+//        print("Temp Input into Array: \(userInputAddToArray)")
         userInput = input.map{ String($0) }
         print("Input Number is \(userInput)")
     }
@@ -237,6 +294,7 @@ class ViewController: UIViewController {
     func generateFirstNumber() {
         firstNumber = Int.random(in: 1...9)
         //        print("First Number is : \(firstNumber)")
+        
         number.append(firstNumber)
     }//End of function
     

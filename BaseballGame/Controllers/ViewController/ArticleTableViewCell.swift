@@ -22,24 +22,34 @@ class ArticleTableViewCell: UITableViewCell {
     @IBOutlet weak var articleImageView: UIImageView!
     
     @IBOutlet weak var articleDescription: UILabel!
-    @IBOutlet weak var articleContent: UILabel!
     @IBOutlet weak var articleTitle: UILabel!
+    @IBOutlet weak var favoriteBtn: UIButton!
     
+    @IBOutlet weak var favoriteBtnTapped: UIButton!
     var article: Article? {
         //as soon as get the Post and
         didSet{
             updateViews()
         }
     }
+    @IBOutlet weak var sharedBtn: UIButton!
+
     
     weak var delegate: PresentErrorToUserDelegate?
     
+    
+    
+    @IBAction func sharedBtnTapped(_ sender: Any) {
+      
+    
+        
+        
+    }
     func updateViews() {
         guard let article = article else {return}
         
         articleTitle.text = article.title
-        articleContent.text = article.content
-        articleDescription.text = article.description
+//        articleDescription.text = article.description
         articleImageView.image = nil
         
             ArticleController.fetchImage(article: article) {(result) in
@@ -60,6 +70,10 @@ class ArticleTableViewCell: UITableViewCell {
     
     //MARK: Action
     
+    @IBAction func favoriteBtnTapped(_ sender: Any) {
+//        print("Favorite Btn tapped")
+
+    }
     
     //MARK: Methods
 
