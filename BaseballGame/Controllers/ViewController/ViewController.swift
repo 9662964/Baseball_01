@@ -1,3 +1,6 @@
+
+
+
 //
 //  ViewController.swift
 //  BaseballGame
@@ -76,6 +79,7 @@ class ViewController: UIViewController {
         //MARK: display golden number
         //randomNumberLabel.text = tempGeneratedNumber
         gettingGoldenNumber()
+        number = []
 //        self.playBtn = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(Action))
 //
 //        self.pauseBtn = UIBarButtonItem(barButtonSystemItem: .pause, target: self, action: #selector(pause))
@@ -129,7 +133,7 @@ class ViewController: UIViewController {
         updateLabel()
         indexNumber += 1
         inputField.text = ""
-        resetLabel()
+//        resetLabel()
     }
     
     
@@ -158,6 +162,7 @@ class ViewController: UIViewController {
         tempGeneratedNumber = String(firstNumber) + String(secondNumber) + String(thirdNumber)
         gettingGoldenNumber()
         totalTime = 0
+        number = []
     }
     
     func resetLabel() {
@@ -204,6 +209,8 @@ class ViewController: UIViewController {
                 let finalScore:String = String(totalTime)
                 score.append(finalScore)
                 print("Strike: \(strikeCount), Ball: \(ballCount), Out: \(outCount)")
+                timer.invalidate()
+                
             }
             else if userInput[0] == goldenNumber[0] && userInput[1] == goldenNumber[1] ||
                 userInput[0] == goldenNumber[0] && userInput[2] == goldenNumber[2] ||
@@ -259,6 +266,9 @@ class ViewController: UIViewController {
             {
                 ballCount = 1
                   print("Strike: \(strikeCount), Ball: \(ballCount), Out: \(outCount)")
+            } else {
+                ballCount = 0
+                  print("Strike: \(strikeCount), Ball: \(ballCount), Out: \(outCount)")
             }
         }
     
@@ -275,8 +285,8 @@ class ViewController: UIViewController {
         guard let input = inputField.text else {return}
         rawInput = input
         print("Before Input Split - first input number: \(input)")
-        var userInputAddToArray = inputNumber.append(input)
-        print("Temp Input into Array: \(userInputAddToArray)")
+//        var userInputAddToArray = inputNumber.append(input)
+//        print("Temp Input into Array: \(userInputAddToArray)")
         userInput = input.map{ String($0) }
         print("Input Number is \(userInput)")
     }
@@ -284,6 +294,7 @@ class ViewController: UIViewController {
     func generateFirstNumber() {
         firstNumber = Int.random(in: 1...9)
         //        print("First Number is : \(firstNumber)")
+        
         number.append(firstNumber)
     }//End of function
     

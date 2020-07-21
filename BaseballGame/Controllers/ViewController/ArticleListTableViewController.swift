@@ -27,6 +27,17 @@ class ArticleListTableViewController: UITableViewController,UISearchBarDelegate 
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         tap.cancelsTouchesInView = false
+//        tableView.backgroundColor = UIColor.lightBlue
+    }
+    
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let view = UIView()
+        view.backgroundColor = UIColor.lightBlue
+        return view
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
     }
     
     
@@ -64,10 +75,10 @@ class ArticleListTableViewController: UITableViewController,UISearchBarDelegate 
     }
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let accept = UIContextualAction(style: .normal, title: "Accept") { (action, view, nil) in
+        let accept = UIContextualAction(style: .normal, title: "Favorite") { (action, view, nil) in
             print("Has been accepted")
             print(indexPath)
-            
+            tableView.backgroundColor = UIColor.lightBlue
             self.tempSearchTerm = self.articles[indexPath.row].title ?? ""
             let tempUrl = self.articles[indexPath.row].url
             print(tempUrl)
@@ -78,7 +89,7 @@ class ArticleListTableViewController: UITableViewController,UISearchBarDelegate 
         //How to add icon
         //accept.image = #imageLiteral(resourceName: <#T##String#>)
         
-        let waitlist = UIContextualAction(style: .normal, title: "Wait List") { (action, view, nil) in
+        let waitlist = UIContextualAction(style: .normal, title: "Share") { (action, view, nil) in
             print("Has been on the wait list")
         }
         

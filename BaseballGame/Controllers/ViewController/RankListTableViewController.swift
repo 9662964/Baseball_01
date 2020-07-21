@@ -15,7 +15,12 @@ class RankListTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.backgroundColor = .yellow
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -27,15 +32,19 @@ class RankListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return ViewController.shared.score.count
+        let score = ViewController.shared.score
+        return score.count
     }
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "rankCell", for: indexPath)
 
-        // Configure the cell...
-        cell.textLabel?.text = score[indexPath.row]
+
+        
+        
+        cell.textLabel?.text = String(indexPath.row)
+        cell.detailTextLabel?.text = ViewController.shared.score[indexPath.row]
         return cell
     }
     

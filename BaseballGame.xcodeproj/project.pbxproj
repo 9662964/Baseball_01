@@ -16,6 +16,8 @@
 		8418815424C2325000ED7BFF /* ArticleListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418815324C2325000ED7BFF /* ArticleListTableViewController.swift */; };
 		8418815624C2395100ED7BFF /* ErrorActionSheetExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418815524C2395000ED7BFF /* ErrorActionSheetExtension.swift */; };
 		8418815824C23A6F00ED7BFF /* ArticleListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8418815724C23A6F00ED7BFF /* ArticleListViewController.swift */; };
+		843431E724C636A9009ECA4F /* StyleGuide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843431E624C636A9009ECA4F /* StyleGuide.swift */; };
+		843431E924C63D95009ECA4F /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 843431E824C63D95009ECA4F /* Game.swift */; };
 		8450E62724BD54A100E8F512 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450E62624BD54A100E8F512 /* AppDelegate.swift */; };
 		8450E62924BD54A100E8F512 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450E62824BD54A100E8F512 /* SceneDelegate.swift */; };
 		8450E62B24BD54A100E8F512 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450E62A24BD54A100E8F512 /* ViewController.swift */; };
@@ -23,7 +25,6 @@
 		8450E63124BD54A100E8F512 /* BaseballGame.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8450E62F24BD54A100E8F512 /* BaseballGame.xcdatamodeld */; };
 		8450E63324BD54A400E8F512 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8450E63224BD54A400E8F512 /* Assets.xcassets */; };
 		8450E63624BD54A400E8F512 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8450E63424BD54A400E8F512 /* LaunchScreen.storyboard */; };
-		8450E6BC24C14EF100E8F512 /* Ball.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8450E6BB24C14EF000E8F512 /* Ball.swift */; };
 		D082B706F272799F1DBC8DBA /* Pods_BaseballGame.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73EA5E75E41B74ED4AC2D37A /* Pods_BaseballGame.framework */; };
 /* End PBXBuildFile section */
 
@@ -40,6 +41,8 @@
 		8418815324C2325000ED7BFF /* ArticleListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListTableViewController.swift; sourceTree = "<group>"; };
 		8418815524C2395000ED7BFF /* ErrorActionSheetExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorActionSheetExtension.swift; sourceTree = "<group>"; };
 		8418815724C23A6F00ED7BFF /* ArticleListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleListViewController.swift; sourceTree = "<group>"; };
+		843431E624C636A9009ECA4F /* StyleGuide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StyleGuide.swift; sourceTree = "<group>"; };
+		843431E824C63D95009ECA4F /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		8450E62324BD54A100E8F512 /* BaseballGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BaseballGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8450E62624BD54A100E8F512 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8450E62824BD54A100E8F512 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,7 +52,6 @@
 		8450E63224BD54A400E8F512 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8450E63524BD54A400E8F512 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8450E63724BD54A400E8F512 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		8450E6BB24C14EF000E8F512 /* Ball.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ball.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			children = (
 				8418815524C2395000ED7BFF /* ErrorActionSheetExtension.swift */,
 				8418814E24C227B200ED7BFF /* ArticleError.swift */,
+				843431E624C636A9009ECA4F /* StyleGuide.swift */,
 			);
 			path = "Helper + Extension";
 			sourceTree = "<group>";
@@ -153,8 +156,8 @@
 		8450E6B824C1461700E8F512 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8450E6BB24C14EF000E8F512 /* Ball.swift */,
 				8418814924C21F3500ED7BFF /* Article.swift */,
+				843431E824C63D95009ECA4F /* Game.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -163,11 +166,11 @@
 			isa = PBXGroup;
 			children = (
 				8450E62A24BD54A100E8F512 /* ViewController.swift */,
+				8410943F24C3ECCC004032B4 /* RankListTableViewController.swift */,
 				8418814524C1F11800ED7BFF /* VideoNewsViewController.swift */,
 				8418815324C2325000ED7BFF /* ArticleListTableViewController.swift */,
 				8418815124C2315200ED7BFF /* ArticleTableViewCell.swift */,
 				8418815724C23A6F00ED7BFF /* ArticleListViewController.swift */,
-				8410943F24C3ECCC004032B4 /* RankListTableViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -296,13 +299,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				8418815224C2315200ED7BFF /* ArticleTableViewCell.swift in Sources */,
+				843431E924C63D95009ECA4F /* Game.swift in Sources */,
 				8418815424C2325000ED7BFF /* ArticleListTableViewController.swift in Sources */,
 				8450E62B24BD54A100E8F512 /* ViewController.swift in Sources */,
 				8450E63124BD54A100E8F512 /* BaseballGame.xcdatamodeld in Sources */,
 				8418815624C2395100ED7BFF /* ErrorActionSheetExtension.swift in Sources */,
 				8418814C24C223AE00ED7BFF /* ArticleController.swift in Sources */,
-				8450E6BC24C14EF100E8F512 /* Ball.swift in Sources */,
 				8418814F24C227B200ED7BFF /* ArticleError.swift in Sources */,
+				843431E724C636A9009ECA4F /* StyleGuide.swift in Sources */,
 				8418815824C23A6F00ED7BFF /* ArticleListViewController.swift in Sources */,
 				8410944024C3ECCC004032B4 /* RankListTableViewController.swift in Sources */,
 				8450E62724BD54A100E8F512 /* AppDelegate.swift in Sources */,
