@@ -1,6 +1,3 @@
-
-
-
 //
 //  ViewController.swift
 //  BaseballGame
@@ -11,15 +8,15 @@
 
 import UIKit
 import Darwin
-import Foundation
+import CoreData
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,UITextFieldDelegate {
     
     static let shared = ViewController()
     
     var timer = Timer()
     var totalTime: Int = 0
-    var score: [String] = []
+
     
 
     //MARK: - Properties
@@ -66,35 +63,38 @@ class ViewController: UIViewController {
     @IBOutlet weak var label6: UILabel!
     @IBOutlet weak var label7: UILabel!
     @IBOutlet weak var label8: UILabel!
+    @IBOutlet weak var checkBtnLabel: UIButton!
     
     
     //MARK: - LifeCycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
         generateFirstNumber()
         generateSecondNumber()
         generateThirdNumber()
         tempGeneratedNumber = String(firstNumber) + String(secondNumber) + String(thirdNumber)
-        //MARK: display golden number
-        //randomNumberLabel.text = tempGeneratedNumber
         gettingGoldenNumber()
         number = []
-//        self.playBtn = UIBarButtonItem(barButtonSystemItem: .play, target: self, action: #selector(Action))
-//
-//        self.pauseBtn = UIBarButtonItem(barButtonSystemItem: .pause, target: self, action: #selector(pause))
-        
+        inputField.delegate = self
+        checkBtnLabel.layer.cornerRadius = 10
+        checkBtnLabel.backgroundColor = #colorLiteral(red: 0.3411764801, green: 0.6235294342, blue: 0.1686274558, alpha: 1)
+        checkBtnLabel.tintColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        testingAlert()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+//        presentAlert()
+
+    }
+    
+    func testingAlert() {
+        AlertView.shared.showAlert(title: "Test", message: "How to play Game", alertType: .Success)
+    }
+    
+    //MARK: Actions
     @IBAction func playBtnTapped(_ sender: Any) {
         timerFunction()
-    }
-    
-    
-    
- 
-    
-    func timerFunction() {
-        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(Action), userInfo: nil, repeats: true)
     }
     
     @IBAction func pauseBtnTapped(_ sender: Any) {
@@ -102,74 +102,99 @@ class ViewController: UIViewController {
         timer.invalidate()
     }
     
-//    @objc func pause() {
-//        timer.invalidate()
-//        self.navigationItem.rightBarButtonItem = playBtn
-//    }
+    @IBAction func checkBtnTapped(_ sender: Any) {
+        if inputField.text != "" {
+           print(number)
+           gettingInput()
+           checkStrike()
+           checkBall()
+           updateLabel()
+           indexNumber += 1
+           inputField.text = ""
+           inputField.backgroundColor = .white
+           inputField.placeholder = ""
+        }else{
+           inputField.placeholder = "Please enter 3 numbers"
+           inputField.backgroundColor = .cyan
+        }
+    }
     
-   @objc func Action() {
+    @IBAction func resetBtnTapped(_ sender: Any) {
+        restartGame()
+    }
+    
+    @IBAction func admBtnTapped(_ sender: Any) {
+            randomNumberLabel.text = "\(goldenNumber)"
+    }
+
+    
+    
+    
+    //MARK: Methods
+    //Dismiss keyboard
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+   
+    @objc func Action() {
         totalTime += 1
         timerLabel.text = "\(totalTime)"
     }
-    
-    
     
     @objc func updateTimer() {
         totalTime += 1
         timerLabel.text = "\(totalTime)"
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true)
-    }
-    
-    
-    //MARK: - Action
-    @IBAction func checkBtnTapped(_ sender: Any) {
-        print(number)
-        gettingInput()
-        checkStrike()
-        checkBall()
-        updateLabel()
-        indexNumber += 1
-        inputField.text = ""
-//        resetLabel()
-    }
-    
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        print("From textFieldShouldReturn: \(inputField .text!)")
+        inputField.endEditing(true)
         return true
     }
     
-
+    func timerFunction() {
+        timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(Action), userInfo: nil, repeats: true)
+    }
     
-    @IBAction func resetBtnTapped(_ sender: Any) {
+    func presentAlert() {
+        let alertController = UIAlertController(title: "Get Start", message: "How to play game \n 1. Please select 3 numbers and then tap Check button \n 2. Base on your input, result will be shown \n 3. Keep trying input 3 number until you get 3 strikes \n 4.If you get correct number within 9 trials, you won if not then you lost" , preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        let playAction = UIAlertAction(title: "Play", style: .default) { (_) in
+            self.restartGame()
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(playAction)
+        self.present(alertController,animated: true)
+    }
+    
+    func restartGame() {
         resetLabel()
-        indexNumber = 0
-        label0.text = ""
-        label1.text = ""
-        label2.text = ""
-        label3.text = ""
-        label4.text = ""
-        label5.text = ""
-        label6.text = ""
-        label7.text = ""
-        label8.text = ""
-        generateFirstNumber()
-        generateSecondNumber()
-        generateThirdNumber()
-        tempGeneratedNumber = String(firstNumber) + String(secondNumber) + String(thirdNumber)
-        gettingGoldenNumber()
-        totalTime = 0
-        number = []
+          indexNumber = 0
+          label0.text = ""
+          label1.text = ""
+          label2.text = ""
+          label3.text = ""
+          label4.text = ""
+          label5.text = ""
+          label6.text = ""
+          label7.text = ""
+          label8.text = ""
+          generateFirstNumber()
+          generateSecondNumber()
+          generateThirdNumber()
+          tempGeneratedNumber = String(firstNumber) + String(secondNumber) + String(thirdNumber)
+          gettingGoldenNumber()
+          totalTime = 0
+          number = []
+          timerFunction()
     }
     
     func resetLabel() {
         strikeCount = 0
         ballCount = 0
         outCount = 0
-        var labelRest = "Strike: \(strikeCount), Ball: \(ballCount), Out: \(outCount)"
+        var labelReset = "Strike: \(strikeCount), Ball: \(ballCount), Out: \(outCount)"
         timer.invalidate()
         timerLabel.text = "0"
     }
@@ -194,23 +219,20 @@ class ViewController: UIViewController {
         }else if indexNumber == 8{
             label8.text = "\(rawInput)   Strike: \(strikeCount), Ball: \(ballCount), Out: \(outCount)"
         }
+    }
+    
+        //For UserDefault
+        var tempArray: [NSString] = [NSString]()
+        var score: [String] = [String]()
 
-    }
-    
-    @IBAction func admBtnTapped(_ sender: Any) {
-        gettingGoldenNumber()
-        gettingInput()
-    }
-    
-    //MARK: Methoods
-        func checkStrike() {
+    func checkStrike() {
             if  userInput[0] == goldenNumber[0] && userInput[1] == goldenNumber[1] && userInput[2] == goldenNumber[2] {
                 strikeCount = 3
                 let finalScore:String = String(totalTime)
                 score.append(finalScore)
+                UserDefaults.standard.set(score, forKey: "score")
                 print("Strike: \(strikeCount), Ball: \(ballCount), Out: \(outCount)")
                 timer.invalidate()
-                
             }
             else if userInput[0] == goldenNumber[0] && userInput[1] == goldenNumber[1] ||
                 userInput[0] == goldenNumber[0] && userInput[2] == goldenNumber[2] ||
@@ -274,41 +296,30 @@ class ViewController: UIViewController {
     
     func gettingGoldenNumber() {
         print("Raw Gonden number  \(tempGeneratedNumber)" )
-        //        let tempSplitNumber = tempGeneratedNumber.split(separator: " ")
-        //        print("Splited Golden number : \(tempSplitNumber)")
         goldenNumber = tempGeneratedNumber.map{ String($0) }
         print("Golden number is : \(goldenNumber)")
     }
-    
-    
+
     func gettingInput() {
-        guard let input = inputField.text else {return}
-        rawInput = input
-        print("Before Input Split - first input number: \(input)")
-//        var userInputAddToArray = inputNumber.append(input)
-//        print("Temp Input into Array: \(userInputAddToArray)")
-        userInput = input.map{ String($0) }
-        print("Input Number is \(userInput)")
-    }
+                    guard let input = inputField.text else {return}
+                    rawInput = input
+                    print("Before Input Split - first input number: \(input)")
+                    userInput = input.map{ String($0) }
+                    print("Input Number is \(userInput)")
+                }
     
     func generateFirstNumber() {
         firstNumber = Int.random(in: 1...9)
-        //        print("First Number is : \(firstNumber)")
-        
         number.append(firstNumber)
     }//End of function
-    
     
     func generateSecondNumber() {
         randomNumber = Int.random(in: 0...9)
         if randomNumber != firstNumber {
             secondNumber = randomNumber
-            //            print("Second Number is :  \(secondNumber)")
             number.append(secondNumber)
         }else if randomNumber == firstNumber {
-            //print("Opps~ We got same number, will draw once agein")
             randomNumber = Int.random(in: 0...9)
-            //            print("Second number : \(secondNumber)")
             number.append(secondNumber)
         }
     }//End of function
@@ -317,7 +328,6 @@ class ViewController: UIViewController {
         randomNumber = Int.random(in: 0...9)
         if randomNumber != firstNumber && randomNumber != secondNumber {
             thirdNumber = randomNumber
-            //            print("Third number is :  \(thirdNumber)\n\n")
             number.append(thirdNumber)
         } else if randomNumber == firstNumber || randomNumber == secondNumber {
             print("Got Same number as first or second number  \(randomNumber)")
@@ -335,15 +345,7 @@ class ViewController: UIViewController {
                     thirdNumber = randomNumber
                 }
             }
-            //            print("Third number is : \(thirdNumber)\n\n")
             number.append(thirdNumber)
         }
     }//End of Function
-    
-    
-    
-    
 }//End of Class
-
-
-

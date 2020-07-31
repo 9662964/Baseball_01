@@ -8,6 +8,7 @@ target 'BaseballGame' do
 pod 'youtube-ios-player-helper'
 
   # Pods for BaseballGame
+pod 'SideMenu'
 
 
 

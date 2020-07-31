@@ -14,13 +14,7 @@ protocol PresentErrorToUserDelegate: class {
 
 class ArticleTableViewCell: UITableViewCell {
 
-    //MARK: Properties
-    
-    
-    //MARK: Outlet
-    
     @IBOutlet weak var articleImageView: UIImageView!
-    
     @IBOutlet weak var articleDescription: UILabel!
     @IBOutlet weak var articleTitle: UILabel!
     @IBOutlet weak var favoriteBtn: UIButton!
@@ -32,6 +26,7 @@ class ArticleTableViewCell: UITableViewCell {
             updateViews()
         }
     }
+
     @IBOutlet weak var sharedBtn: UIButton!
 
     

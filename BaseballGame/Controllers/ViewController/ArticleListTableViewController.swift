@@ -44,15 +44,18 @@ class ArticleListTableViewController: UITableViewController,UISearchBarDelegate 
     @IBAction func shareBtnTapped(_ sender: Any) {
        
         
-        /*  share the text string
-            let text = "This is the text....."
-            let textShare = [ text ]
-            let activityViewController = UIActivityViewController(activityItems: textShare , applicationActivities: nil)
-            activityViewController.popoverPresentationController?.sourceView = self.view
-            self.present(activityViewController, animated: true, completion: nil)
-       */
+
         
-        
+            
+
+        }
+    
+    func shareArticleUrlandTitle() {
+      
+    }
+    
+    
+    func shareCaptureScreenImage() {
         // Capture the whole screen and share
         let bounds = UIScreen.main.bounds
         UIGraphicsBeginImageContextWithOptions(bounds.size, true, 0.0)
@@ -62,10 +65,7 @@ class ArticleListTableViewController: UITableViewController,UISearchBarDelegate 
         let activityViewController = UIActivityViewController(activityItems: [img!], applicationActivities: nil)
         activityViewController.popoverPresentationController?.sourceView = self.view
         self.present(activityViewController, animated: true, completion: nil)
-
-         
- 
-        }
+    }
     
     
     @IBAction func favoriteBtnTapped(_ sender: Any) {
@@ -76,7 +76,7 @@ class ArticleListTableViewController: UITableViewController,UISearchBarDelegate 
     
     override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let accept = UIContextualAction(style: .normal, title: "Favorite") { (action, view, nil) in
-            print("Has been accepted")
+            
             print(indexPath)
             tableView.backgroundColor = UIColor.lightBlue
             self.tempSearchTerm = self.articles[indexPath.row].title ?? ""
@@ -89,13 +89,23 @@ class ArticleListTableViewController: UITableViewController,UISearchBarDelegate 
         //How to add icon
         //accept.image = #imageLiteral(resourceName: <#T##String#>)
         
-        let waitlist = UIContextualAction(style: .normal, title: "Share") { (action, view, nil) in
-            print("Has been on the wait list")
+        let shareBtn = UIContextualAction(style: .normal, title: "Share") { (action, view, nil) in
+            print("Share btn tapped")
+             //share the text string
+            let articleURL = self.articles[indexPath.row].url
+            
+                     let textShare = [ articleURL  ]
+                     let activityViewController = UIActivityViewController(activityItems: textShare , applicationActivities: nil)
+                     activityViewController.popoverPresentationController?.sourceView = self.view
+                     self.present(activityViewController, animated: true, completion: nil)
+                
+                 print("shareArticleUrlandTitle func tapped")
+
         }
         
-        waitlist.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
+        shareBtn.backgroundColor = #colorLiteral(red: 0.9686274529, green: 0.78039217, blue: 0.3450980484, alpha: 1)
         //prevent full swipe
-        let config = UISwipeActionsConfiguration(actions: [accept,waitlist])
+        let config = UISwipeActionsConfiguration(actions: [accept,shareBtn])
         config.performsFirstActionWithFullSwipe = false
         return config
         

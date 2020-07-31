@@ -21,3 +21,15 @@ struct Article: Decodable {
     let urlToImage: URL?
     let publishedAt: String?
 }
+
+class TempBtnTitle {
+    static var btn1: String = ""
+    var btn2: String = ""
+    var btn3: String = ""
+    var btn4: String = ""
+    var btn5: String = ""
+    var btn6: String = ""
+    
+    
+}
+
