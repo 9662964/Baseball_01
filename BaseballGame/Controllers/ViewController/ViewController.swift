@@ -87,6 +87,11 @@ class ViewController: UIViewController,UITextFieldDelegate {
 //        presentAlert()
 
     }
+
+
+    
+    
+    
     
     func testingAlert() {
         AlertView.shared.showAlert(title: "Test", message: "How to play Game", alertType: .Success)
@@ -103,19 +108,40 @@ class ViewController: UIViewController,UITextFieldDelegate {
     }
     
     @IBAction func checkBtnTapped(_ sender: Any) {
-        if inputField.text != "" {
-           print(number)
-           gettingInput()
-           checkStrike()
-           checkBall()
-           updateLabel()
-           indexNumber += 1
-           inputField.text = ""
-           inputField.backgroundColor = .white
-           inputField.placeholder = ""
-        }else{
-           inputField.placeholder = "Please enter 3 numbers"
-           inputField.backgroundColor = .cyan
+        inputValidation()
+//        if inputField.text != "" {
+//           print(number)
+//           gettingInput()
+//           checkStrike()
+//           checkBall()
+//           updateLabel()
+//           indexNumber += 1
+//           inputField.text = ""
+//           inputField.backgroundColor = .white
+//           inputField.placeholder = ""
+//        }else{
+//           inputField.placeholder = "Please enter 3 numbers"
+//           inputField.backgroundColor = .cyan
+//        }
+    }
+    
+    
+    func inputValidation() {
+        if let tempInput = inputField.text {
+            if tempInput.count < 3 {
+                inputField.placeholder = "Please enter 3 numbers"
+                inputField.backgroundColor = .cyan
+            }else{
+                print(number)
+                gettingInput()
+                checkStrike()
+                checkBall()
+                updateLabel()
+                indexNumber += 1
+                inputField.text = ""
+                inputField.backgroundColor = .white
+                inputField.placeholder = ""
+            }
         }
     }
     
@@ -132,6 +158,16 @@ class ViewController: UIViewController,UITextFieldDelegate {
     
     //MARK: Methods
     //Dismiss keyboard
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        let currentText = inputField.text ?? ""
+        guard let stringRange = Range(range, in: currentText) else { return false }
+        let updatedText = currentText.replacingCharacters(in: stringRange, with: string)
+
+        // make sure the result is under 16 characters
+        return updatedText.count <= 3
+    }
+    
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -349,3 +385,5 @@ class ViewController: UIViewController,UITextFieldDelegate {
         }
     }//End of Function
 }//End of Class
+
+

@@ -31,6 +31,7 @@ class AlertView: UIView {
     }
     
     @IBAction func doneBtnTapped(_ sender: Any) {
+//        ViewController.shared.timerFunction()
         parentView.removeFromSuperview()
         
     }
